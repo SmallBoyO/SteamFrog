@@ -1,4 +1,4 @@
-package hello;
+package xyz.steamfrog.hello;
 
 public class Greeting {
 
