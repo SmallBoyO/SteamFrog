@@ -40,6 +40,11 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ibasco.agql</groupId>
+            <artifactId>agql-steam-webapi</artifactId>
+            <version>0.1.7</version>
+        </dependency>
     </dependencies>
 
     <properties>
