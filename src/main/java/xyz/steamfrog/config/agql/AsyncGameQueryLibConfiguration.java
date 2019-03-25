@@ -1,4 +1,4 @@
-package xyz.steamfrog.configuration;
+package xyz.steamfrog.config.agql;
 
 import com.ibasco.agql.protocols.valve.steam.webapi.SteamWebApiClient;
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AsyncGameQueryLibConfiguration {
 
-    @Value("${steamWebApiKey}")
+    @Value("${steamWebApiKey:test}")
     private String steamWebApiKey;
 
     @Bean
