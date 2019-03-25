@@ -28,6 +28,44 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- java lib for steam api begin-->
+        <dependency>
+            <groupId>com.ibasco.agql</groupId>
+            <artifactId>agql-steam-master</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibasco.agql</groupId>
+            <artifactId>agql-source-query</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibasco.agql</groupId>
+            <artifactId>agql-steam-webapi</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibasco.agql</groupId>
+            <artifactId>agql-dota2-webapi</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+        <!-- java lib for steam api end-->
+
+        <!-- bugsnag begin-->
+        <dependency>
+            <groupId>com.bugsnag</groupId>
+            <version>[3.0,4.0)</version>
+            <artifactId>bugsnag-spring</artifactId>
+        </dependency>
+        <!-- bugsnag end-->
+
+        <!-- sentry https://docs.sentry.io/clients/java/modules/spring/-->
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-spring</artifactId>
+            <version>1.7.16</version>
+        </dependency>
+        <!-- sentry -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -39,11 +77,6 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ibasco.agql</groupId>
-            <artifactId>agql-steam-webapi</artifactId>
-            <version>0.1.7</version>
         </dependency>
     </dependencies>
 
