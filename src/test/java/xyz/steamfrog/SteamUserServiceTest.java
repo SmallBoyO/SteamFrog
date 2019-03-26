@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import xyz.steamfrog.pojo.SteamUser;
 import xyz.steamfrog.service.SteamUserService;
 
 /**
@@ -25,7 +24,7 @@ public class SteamUserServiceTest {
 
     @Test
     public void find(){
-        steamUserService.find(76561198085354613L);
+        steamUserService.findSteamUserInfoBySteamId(76561198085354613L);
     }
 
 }

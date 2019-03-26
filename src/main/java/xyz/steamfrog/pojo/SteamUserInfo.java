@@ -3,14 +3,19 @@ package xyz.steamfrog.pojo;
 import lombok.Data;
 import xyz.steamfrog.pojo.common.BasePojo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Steam用户pojo
  *
  * @author Clevo
  * @date 2019/3/25
  */
+@Entity
+@Table(name = "steam_user")
 @Data
-public class SteamUser extends BasePojo {
+public class SteamUserInfo extends BasePojo {
 
     private String steamId;
 

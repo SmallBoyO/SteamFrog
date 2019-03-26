@@ -1,5 +1,7 @@
 package xyz.steamfrog.service;
 
+import xyz.steamfrog.pojo.SteamUserInfo;
+
 /**
  * SteamUserService
  *
@@ -8,6 +10,11 @@ package xyz.steamfrog.service;
  */
 public interface SteamUserService {
 
-    public void find(Long steamId);
+    /**
+     * 根据steamId查询steam用户信息
+     * @param steamId
+     * @return
+     */
+    SteamUserInfo findSteamUserInfoBySteamId(Long steamId);
 
 }

@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
@@ -28,6 +25,7 @@ public class BasePojo {
 
     public Date editTime;
 
+    @Column(name = "is_delete")
     public Boolean delete;
 
     public void init(){
