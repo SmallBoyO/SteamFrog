@@ -15,6 +15,6 @@ public interface SteamUserService {
      * @param steamId
      * @return
      */
-    SteamUserInfo findSteamUserInfoBySteamId(Long steamId);
+    SteamUserInfo findSteamUserInfoBySteamId(Long steamId,Boolean needQueryFriend);
 
 }

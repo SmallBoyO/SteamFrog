@@ -21,16 +21,16 @@ public class BasePojo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    public Date addTime;
+    public Date createTime;
 
-    public Date editTime;
+    public Date modifyTime;
 
     @Column(name = "is_delete")
     public Boolean delete;
 
     public void init(){
-        this.setAddTime(new Date());
-        this.setEditTime(new Date());
+        this.setCreateTime(new Date());
+        this.setModifyTime(new Date());
         this.setDelete(false);
     }
 

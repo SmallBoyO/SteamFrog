@@ -1,5 +1,6 @@
 package xyz.steamfrog;
 
+import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,12 @@ public class SteamUserServiceTest {
     @Autowired
     SteamUserService steamUserService;
 
+    @Autowired
+    SteamUser steamUser;
+
     @Test
     public void find(){
-        steamUserService.findSteamUserInfoBySteamId(76561198085354613L);
+        steamUserService.findSteamUserInfoBySteamId(76561198085354613L,true);
     }
 
 }

@@ -3,6 +3,7 @@ package xyz.steamfrog.service.impl;
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamPlayerProfile;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,11 @@ public class SteamUserServiceImpl implements SteamUserService {
     @Autowired
     private SteamUserInfoRepository steamUserInfoRepository;
 
+    @Autowired
+    private SteamUserService steamUserService;
+
     @Override
-    public SteamUserInfo findSteamUserInfoBySteamId(Long steamId) {
+    public SteamUserInfo findSteamUserInfoBySteamId(Long steamId,Boolean needQueryFriend) {
         try {
             SteamUserInfo steamUserInfo = steamUserInfoRepository.findBySteamId(steamId.toString());
             if(steamUserInfo==null){
@@ -36,6 +40,15 @@ public class SteamUserServiceImpl implements SteamUserService {
                 steamUserInfo.init();
                 BeanUtils.copyProperties(steamPlayerProfile,steamUserInfo);
                 steamUserInfo = steamUserInfoRepository.save(steamUserInfo);
+
+                //查询了用户信息之后 异步查询用户的好友信息
+                if(needQueryFriend) {
+                    steamUser.getFriendList(steamId).thenAccept(steamFriends -> {
+                        steamFriends.forEach(steamFriend -> {
+                            steamUserService.findSteamUserInfoBySteamId(steamFriend.getSteamId(),false);
+                        });
+                    });
+                }
             }
             return steamUserInfo;
         }catch (Exception e){
@@ -43,4 +56,5 @@ public class SteamUserServiceImpl implements SteamUserService {
             return null;
         }
     }
+
 }

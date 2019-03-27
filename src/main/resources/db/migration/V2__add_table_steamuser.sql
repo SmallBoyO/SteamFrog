@@ -2,9 +2,9 @@
 -- steam用户表
 -- ----------------------------
 CREATE TABLE `steam_user` (
-  `id` int(32) NOT NULL AUTO_INCREMENT COMMENT '账户id',
-  `add_time` datetime NOT NULL,
-  `edit_time` datetime NOT NULL,
+  `id` int(32) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `create_time` datetime NOT NULL,
+  `modify_time` datetime NOT NULL,
   `is_delete` bit(1) NOT NULL default false COMMENT '是否删除 0:否 1:是',
   `steam_id` bigint NOT NULL COMMENT 'steamId',
   `community_visibility_state` int(2) NOT NULL COMMENT 'profile是否可见 1:不可见 3:可见',
