@@ -1,6 +1,10 @@
 package xyz.steamfrog;
 
+import com.ibasco.agql.protocols.valve.dota2.webapi.interfaces.Dota2Econ;
+import com.ibasco.agql.protocols.valve.dota2.webapi.interfaces.Dota2Fantasy;
+import com.ibasco.agql.protocols.valve.dota2.webapi.pojos.Dota2FantasyPlayerInfo;
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
+import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamGroupId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import xyz.steamfrog.service.SteamUserService;
+
+import java.util.List;
 
 /**
  * SteamUserServiceTest
