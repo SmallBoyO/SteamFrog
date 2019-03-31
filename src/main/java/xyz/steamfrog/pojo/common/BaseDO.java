@@ -10,11 +10,11 @@ import java.util.Date;
 @MappedSuperclass
 @Data
 @Slf4j
-public class BasePojo {
+public class BaseDO {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public BasePojo() {
+    public BaseDO() {
     }
 
     @Id

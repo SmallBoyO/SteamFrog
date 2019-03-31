@@ -1,7 +1,7 @@
 package xyz.steamfrog.pojo;
 
 import lombok.Data;
-import xyz.steamfrog.pojo.common.BasePojo;
+import xyz.steamfrog.pojo.common.BaseDO;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "steam_user")
 @Data
-public class SteamUserInfo extends BasePojo {
+public class SteamUserInfoDO extends BaseDO {
 
     private String steamId;
 

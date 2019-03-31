@@ -1,6 +1,6 @@
 package xyz.steamfrog.service;
 
-import xyz.steamfrog.pojo.SteamUserInfo;
+import xyz.steamfrog.pojo.SteamUserInfoDO;
 
 /**
  * SteamUserService
@@ -15,6 +15,6 @@ public interface SteamUserService {
      * @param steamId
      * @return
      */
-    SteamUserInfo findSteamUserInfoBySteamId(Long steamId);
+    SteamUserInfoDO findSteamUserInfoBySteamId(Long steamId);
 
 }

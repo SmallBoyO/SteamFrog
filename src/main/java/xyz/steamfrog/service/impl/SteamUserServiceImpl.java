@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.steamfrog.pojo.SteamUserInfo;
+import xyz.steamfrog.pojo.SteamUserInfoDO;
 import xyz.steamfrog.repository.SteamUserInfoRepository;
 import xyz.steamfrog.service.SteamUserService;
 
@@ -27,11 +27,11 @@ public class SteamUserServiceImpl implements SteamUserService {
     private SteamUserInfoRepository steamUserInfoRepository;
 
     @Override
-    public SteamUserInfo findSteamUserInfoBySteamId(Long steamId) {
+    public SteamUserInfoDO findSteamUserInfoBySteamId(Long steamId) {
         try {
-            SteamUserInfo steamUserInfo = steamUserInfoRepository.findBySteamId(steamId.toString());
+            SteamUserInfoDO steamUserInfo = steamUserInfoRepository.findBySteamId(steamId.toString());
             if(steamUserInfo==null){
-                steamUserInfo = new SteamUserInfo();
+                steamUserInfo = new SteamUserInfoDO();
                 SteamPlayerProfile steamPlayerProfile = steamUser.getPlayerProfile(steamId).get();
                 steamUserInfo.init();
                 BeanUtils.copyProperties(steamPlayerProfile,steamUserInfo);
