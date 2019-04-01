@@ -17,29 +17,29 @@ import javax.persistence.Table;
 @Data
 public class SteamUserDO extends BaseDO {
 
-    private String steamId;
+  private String steamId;
 
-    private Integer communityVisibilityState;
+  private Integer communityVisibilityState;
 
-    private Integer profileState;
+  private Integer profileState;
 
-    private String name;
+  private String name;
 
-    private Long lastLogOff;
+  private Long lastLogOff;
 
-    private String profileUrl;
+  private String profileUrl;
 
-    private String avatarUrl;
+  private String avatarUrl;
 
-    private String avatarMediumUrl;
+  private String avatarMediumUrl;
 
-    private String avatarFullUrl;
+  private String avatarFullUrl;
 
-    private Integer personaState;
+  private Integer personaState;
 
-    private Long primaryGroupId;
+  private Long primaryGroupId;
 
-    private Long timeCreated;
+  private Long timeCreated;
 
-    private Integer personaStateFlags;
+  private Integer personaStateFlags;
 }

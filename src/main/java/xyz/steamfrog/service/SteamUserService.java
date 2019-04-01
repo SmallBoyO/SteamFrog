@@ -10,11 +10,9 @@ import xyz.steamfrog.pojo.SteamUserDO;
  */
 public interface SteamUserService {
 
-    /**
-     * 根据steamId查询steam用户信息
-     * @param steamId
-     * @return
-     */
-    SteamUserDO findOrCreateBySteamId(Long steamId);
+  /**
+   * 根据steamId查询steam用户信息
+   */
+  SteamUserDO findOrCreateBySteamId(Long steamId);
 
 }

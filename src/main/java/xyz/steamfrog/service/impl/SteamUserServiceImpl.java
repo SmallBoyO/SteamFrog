@@ -20,26 +20,27 @@ import xyz.steamfrog.service.SteamUserService;
 @Slf4j
 public class SteamUserServiceImpl implements SteamUserService {
 
-    @Autowired
-    SteamUser webApiSteamUser;
+  @Autowired
+  SteamUser webApiSteamUser;
 
-    @Autowired
-    private SteamUserRepository steamUserRepository;
+  @Autowired
+  private SteamUserRepository steamUserRepository;
 
-    @Override
-    public SteamUserDO findOrCreateBySteamId(Long steamId) {
-        try {
-            SteamUserDO steamUser = steamUserRepository.findBySteamId(steamId);
-            if (steamUser == null) {
-                steamUser = new SteamUserDO();
-                SteamPlayerProfile steamPlayerProfile = webApiSteamUser.getPlayerProfile(steamId).get();
-                BeanUtils.copyProperties(steamPlayerProfile, steamUser);
-                steamUser = steamUserRepository.save(steamUser);
-            }
-            return steamUser;
-        } catch (Exception e) {
-            log.error("获取steam用户信息异常.", e);
-            return null;
-        }
+  @Override
+  public SteamUserDO findOrCreateBySteamId(Long steamId) {
+    //TODO 区分数据查询问题还是web api问题. 抛出不同的异常
+    try {
+      SteamUserDO steamUser = steamUserRepository.findBySteamId(steamId);
+      if (steamUser == null) {
+        steamUser = new SteamUserDO();
+        SteamPlayerProfile steamPlayerProfile = webApiSteamUser.getPlayerProfile(steamId).get();
+        BeanUtils.copyProperties(steamPlayerProfile, steamUser);
+        steamUser = steamUserRepository.save(steamUser);
+      }
+      return steamUser;
+    } catch (Exception e) {
+      log.error("获取steam用户信息异常.", e);
+      return null;
     }
+  }
 }
