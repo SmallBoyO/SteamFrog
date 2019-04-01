@@ -19,12 +19,12 @@ import xyz.steamfrog.service.SteamUserService;
 @EnableAutoConfiguration
 public class SteamUserServiceTest {
 
-    @Autowired
-    SteamUserService steamUserService;
+  @Autowired
+  SteamUserService steamUserService;
 
-    @Test
-    public void find(){
-        steamUserService.findOrCreateBySteamId(76561198085354613L);
-    }
+  @Test
+  public void find() {
+    steamUserService.findOrCreateBySteamId(76561198085354613L);
+  }
 
 }

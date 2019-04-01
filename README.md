@@ -1,11 +1,15 @@
 # SteamFrog
 
+## Quick Start
+### Code Style
+(Intellij IDEA 配置 Code Style)[https://www.jianshu.com/p/a44329bf5935]
 # TODO
+
 ## ops
-CI/CD: Azure
-docker
-Kubernetes
-env: pre production, production. sync without important data
+- CI/CD: Azure
+- Docker
+- Kubernetes
+- env: pre production, production. sync without important data
 
 ## develop
 [Bugsnag](https://docs.bugsnag.com/platforms/java/spring/): collect error

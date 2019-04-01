@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Import;
 @Import(BugsnagSpringConfiguration.class)
 public class BugsnagConfig {
 
-    @Bean
-    public Bugsnag bugsnag() {
-        return new Bugsnag("your-api-key-here");
-    }
+  @Bean
+  public Bugsnag bugsnag() {
+    return new Bugsnag("your-api-key-here");
+  }
 }
