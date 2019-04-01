@@ -15,6 +15,9 @@ public class BaseDO {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public BaseDO() {
+        this.setAddTime(new Date());
+        this.setEditTime(new Date());
+        this.setDelete(false);
     }
 
     @Id
@@ -27,12 +30,6 @@ public class BaseDO {
 
     @Column(name = "is_delete")
     public Boolean delete;
-
-    public void init(){
-        this.setAddTime(new Date());
-        this.setEditTime(new Date());
-        this.setDelete(false);
-    }
 
     @Override
     public String toString() {

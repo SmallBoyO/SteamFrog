@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.steamfrog.pojo.SteamUserInfoDO;
-import xyz.steamfrog.repository.SteamUserInfoRepository;
+import xyz.steamfrog.pojo.SteamUserDO;
+import xyz.steamfrog.repository.SteamUserRepository;
 import xyz.steamfrog.service.SteamUserService;
 
 /**
@@ -21,25 +21,24 @@ import xyz.steamfrog.service.SteamUserService;
 public class SteamUserServiceImpl implements SteamUserService {
 
     @Autowired
-    SteamUser steamUser;
+    SteamUser webApiSteamUser;
 
     @Autowired
-    private SteamUserInfoRepository steamUserInfoRepository;
+    private SteamUserRepository steamUserRepository;
 
     @Override
-    public SteamUserInfoDO findSteamUserInfoBySteamId(Long steamId) {
+    public SteamUserDO findOrCreateBySteamId(Long steamId) {
         try {
-            SteamUserInfoDO steamUserInfo = steamUserInfoRepository.findBySteamId(steamId.toString());
-            if(steamUserInfo==null){
-                steamUserInfo = new SteamUserInfoDO();
-                SteamPlayerProfile steamPlayerProfile = steamUser.getPlayerProfile(steamId).get();
-                steamUserInfo.init();
-                BeanUtils.copyProperties(steamPlayerProfile,steamUserInfo);
-                steamUserInfo = steamUserInfoRepository.save(steamUserInfo);
+            SteamUserDO steamUser = steamUserRepository.findBySteamId(steamId);
+            if (steamUser == null) {
+                steamUser = new SteamUserDO();
+                SteamPlayerProfile steamPlayerProfile = webApiSteamUser.getPlayerProfile(steamId).get();
+                BeanUtils.copyProperties(steamPlayerProfile, steamUser);
+                steamUser = steamUserRepository.save(steamUser);
             }
-            return steamUserInfo;
-        }catch (Exception e){
-            log.error("获取steam用户信息异常.",e);
+            return steamUser;
+        } catch (Exception e) {
+            log.error("获取steam用户信息异常.", e);
             return null;
         }
     }

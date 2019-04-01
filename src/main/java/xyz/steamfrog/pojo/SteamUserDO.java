@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "steam_user")
 @Data
-public class SteamUserInfoDO extends BaseDO {
+public class SteamUserDO extends BaseDO {
 
     private String steamId;
 
