@@ -23,4 +23,6 @@ public class DotaItem extends BasePojo {
 
     private Integer recipe;
 
+    private String imageUrl;
+
 }

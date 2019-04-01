@@ -3,6 +3,7 @@ package xyz.steamfrog;
 import com.ibasco.agql.protocols.valve.dota2.webapi.interfaces.Dota2Econ;
 import com.ibasco.agql.protocols.valve.dota2.webapi.interfaces.Dota2Fantasy;
 import com.ibasco.agql.protocols.valve.dota2.webapi.pojos.Dota2FantasyPlayerInfo;
+import com.ibasco.agql.protocols.valve.steam.webapi.enums.VanityUrlType;
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamGroupId;
 import org.junit.Test;
@@ -32,9 +33,14 @@ public class SteamUserServiceTest {
     @Autowired
     SteamUser steamUser;
 
-    @Test
+//    @Test
     public void find(){
         steamUserService.findSteamUserInfoBySteamId(76561198085354613L,true);
+    }
+
+    @Test
+    public void find2() throws Exception{
+        System.out.println(steamUser.getSteamIdFromVanityUrl("SmallBoy", VanityUrlType.DEFAULT).get());
     }
 
 }
