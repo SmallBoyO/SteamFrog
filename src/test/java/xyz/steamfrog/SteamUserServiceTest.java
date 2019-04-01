@@ -24,7 +24,7 @@ public class SteamUserServiceTest {
 
     @Test
     public void find(){
-        steamUserService.findSteamUserInfoBySteamId(76561198085354613L);
+        steamUserService.findOrCreateBySteamId(76561198085354613L);
     }
 
 }
