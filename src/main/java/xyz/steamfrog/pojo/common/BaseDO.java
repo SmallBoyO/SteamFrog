@@ -15,8 +15,8 @@ public class BaseDO {
   private static final ObjectMapper mapper = new ObjectMapper();
 
   public BaseDO() {
-    this.setAddTime(new Date());
-    this.setEditTime(new Date());
+    this.setCreateTime(new Date());
+    this.setModifyTime(new Date());
     this.setDelete(false);
   }
 
@@ -24,9 +24,9 @@ public class BaseDO {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public Long id;
 
-  public Date addTime;
+  public Date createTime;
 
-  public Date editTime;
+  public Date modifyTime;
 
   @Column(name = "is_delete")
   public Boolean delete;
