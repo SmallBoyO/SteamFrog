@@ -20,18 +20,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AsyncGameQueryLibConfiguration {
 
-    @Value("${steamWebApiKey:test}")
-    private String steamWebApiKey;
+  @Value("${steamWebApiKey:test}")
+  private String steamWebApiKey;
 
-    @Bean
-    public SteamWebApiClient getSteamWebApiClient(){
-        return new SteamWebApiClient(steamWebApiKey);
-    }
+  @Bean
+  public SteamWebApiClient getSteamWebApiClient() {
+    return new SteamWebApiClient(steamWebApiKey);
+  }
 
-    @Bean
-    public SteamUser getSteamUser(){
-        return new SteamUser(getSteamWebApiClient());
-    }
+  @Bean
+  public SteamUser getSteamUser() {
+    return new SteamUser(getSteamWebApiClient());
+  }
 
     @Bean
     public Dota2Econ getDota2Econ(){

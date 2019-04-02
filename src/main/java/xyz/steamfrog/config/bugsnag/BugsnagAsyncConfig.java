@@ -9,11 +9,12 @@ import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
 
 @Configuration
 public class BugsnagAsyncConfig extends AsyncConfigurerSupport {
-    @Autowired
-    private Bugsnag bugsnag;
 
-    @Override
-    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return new BugsnagAsyncExceptionHandler(bugsnag);
-    }
+  @Autowired
+  private Bugsnag bugsnag;
+
+  @Override
+  public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+    return new BugsnagAsyncExceptionHandler(bugsnag);
+  }
 }

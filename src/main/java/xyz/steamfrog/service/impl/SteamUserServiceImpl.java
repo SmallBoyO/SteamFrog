@@ -1,17 +1,15 @@
 package xyz.steamfrog.service.impl;
 
 import com.ibasco.agql.protocols.valve.steam.webapi.interfaces.SteamUser;
-import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamFriend;
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamPlayerProfile;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.steamfrog.pojo.SteamUserFriend;
-import xyz.steamfrog.pojo.SteamUserInfo;
+import xyz.steamfrog.pojo.SteamUserDO;
+import xyz.steamfrog.pojo.SteamUserFriendDO;
 import xyz.steamfrog.repository.SteamUserFriendRepository;
-import xyz.steamfrog.repository.SteamUserInfoRepository;
+import xyz.steamfrog.repository.SteamUserRepository;
 import xyz.steamfrog.service.SteamUserService;
 
 /**
@@ -24,11 +22,11 @@ import xyz.steamfrog.service.SteamUserService;
 @Slf4j
 public class SteamUserServiceImpl implements SteamUserService {
 
-    @Autowired
-    SteamUser steamUser;
+  @Autowired
+  SteamUser webApiSteamUser;
 
-    @Autowired
-    private SteamUserInfoRepository steamUserInfoRepository;
+  @Autowired
+  private SteamUserRepository steamUserRepository;
 
     @Autowired
     private SteamUserFriendRepository steamUserFriendRepository;
@@ -37,26 +35,24 @@ public class SteamUserServiceImpl implements SteamUserService {
     private SteamUserService steamUserService;
 
     @Override
-    public SteamUserInfo findSteamUserInfoBySteamId(Long steamId,Boolean needQueryFriend) {
+    public SteamUserDO findSteamUserInfoBySteamId(Long steamId, Boolean needQueryFriend) {
         try {
-            SteamUserInfo steamUserInfo = steamUserInfoRepository.findBySteamId(steamId.toString());
-            if(steamUserInfo==null){
-                steamUserInfo = new SteamUserInfo();
-                SteamPlayerProfile steamPlayerProfile = steamUser.getPlayerProfile(steamId).get();
-                steamUserInfo.init();
-                BeanUtils.copyProperties(steamPlayerProfile,steamUserInfo);
-                steamUserInfo = steamUserInfoRepository.save(steamUserInfo);
+            SteamUserDO steamUserDO = steamUserRepository.findBySteamId(steamId);
+            if(steamUserDO==null){
+                steamUserDO = new SteamUserDO();
+                SteamPlayerProfile steamPlayerProfile = webApiSteamUser.getPlayerProfile(steamId).get();
+                BeanUtils.copyProperties(steamPlayerProfile,steamUserDO);
+                steamUserDO = steamUserRepository.save(steamUserDO);
 
-                final SteamUserInfo user = new SteamUserInfo();
-                user.setId(steamUserInfo.getId());
+                final SteamUserDO user = new SteamUserDO();
+                user.setId(steamUserDO.getId());
                 //查询了用户信息之后 异步查询用户的好友信息
                 if(needQueryFriend) {
-                    steamUser.getFriendList(steamId).thenAccept(steamFriends -> {
+                    webApiSteamUser.getFriendList(steamId).thenAccept(steamFriends -> {
                         steamFriends.forEach(steamFriend -> {
-                            SteamUserInfo friend = steamUserService.findSteamUserInfoBySteamId(steamFriend.getSteamId(),false);
+                            SteamUserDO friend = steamUserService.findSteamUserInfoBySteamId(steamFriend.getSteamId(),false);
                             if(friend!=null){
-                                SteamUserFriend steamUserFriend = new SteamUserFriend();
-                                steamUserFriend.init();
+                                SteamUserFriendDO steamUserFriend = new SteamUserFriendDO();
                                 steamUserFriend.setUser(user);
                                 steamUserFriend.setFriend(friend);
                                 steamUserFriendRepository.save(steamUserFriend);
@@ -65,10 +61,10 @@ public class SteamUserServiceImpl implements SteamUserService {
                     });
                 }
             }
-            return steamUserInfo;
+            return steamUserDO;
         }catch (Exception e){
             log.error("获取steam用户信息异常.",e);
             return null;
         }
-    }
+  }
 }

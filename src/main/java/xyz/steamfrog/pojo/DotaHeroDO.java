@@ -1,7 +1,7 @@
 package xyz.steamfrog.pojo;
 
 import lombok.Data;
-import xyz.steamfrog.pojo.common.BasePojo;
+import xyz.steamfrog.pojo.common.BaseDO;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "dota_hero")
 @Data
-public class DotaHero extends BasePojo {
+public class DotaHeroDO extends BaseDO {
 
     private Integer heroId;
 

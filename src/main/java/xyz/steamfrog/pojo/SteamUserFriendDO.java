@@ -1,7 +1,7 @@
 package xyz.steamfrog.pojo;
 
 import lombok.Data;
-import xyz.steamfrog.pojo.common.BasePojo;
+import xyz.steamfrog.pojo.common.BaseDO;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * SteamUserFriend
+ * SteamUserFriendDO
  *
  * @author Clevo
  * @date 2019/3/27
@@ -17,14 +17,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "steam_user_friend")
 @Data
-public class SteamUserFriend extends BasePojo {
+public class SteamUserFriendDO extends BaseDO {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private SteamUserInfo user;
+    private SteamUserDO user;
 
     @ManyToOne
     @JoinColumn(name = "friend_id")
-    private SteamUserInfo friend;
+    private SteamUserDO friend;
 
 }

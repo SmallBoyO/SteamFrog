@@ -1,7 +1,7 @@
 package xyz.steamfrog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xyz.steamfrog.pojo.SteamUserFriend;
+import xyz.steamfrog.pojo.SteamUserFriendDO;
 
 /**
  * SteamUserFriendRepository
@@ -9,5 +9,5 @@ import xyz.steamfrog.pojo.SteamUserFriend;
  * @author Clevo
  * @date 2019/3/27
  */
-public interface SteamUserFriendRepository extends JpaRepository<SteamUserFriend,Long> {
+public interface SteamUserFriendRepository extends JpaRepository<SteamUserFriendDO,Long> {
 }

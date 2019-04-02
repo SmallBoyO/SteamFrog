@@ -27,20 +27,12 @@ import java.util.List;
 @EnableAutoConfiguration
 public class SteamUserServiceTest {
 
-    @Autowired
-    SteamUserService steamUserService;
+  @Autowired
+  SteamUserService steamUserService;
 
-    @Autowired
-    SteamUser steamUser;
-
-//    @Test
-    public void find(){
-        steamUserService.findSteamUserInfoBySteamId(76561198085354613L,true);
-    }
-
-    @Test
-    public void find2() throws Exception{
-        System.out.println(steamUser.getSteamIdFromVanityUrl("SmallBoy", VanityUrlType.DEFAULT).get());
-    }
+  @Test
+  public void find(){
+      steamUserService.findSteamUserInfoBySteamId(76561198085354613L,true);
+  }
 
 }
