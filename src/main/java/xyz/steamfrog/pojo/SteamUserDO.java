@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Data
 public class SteamUserDO extends BaseDO {
 
-  private String steamId;
+  private Long steamId;
 
   private Integer communityVisibilityState;
 

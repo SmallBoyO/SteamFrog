@@ -42,6 +42,7 @@ public class SteamUserServiceImpl implements SteamUserService {
                 steamUserDO = new SteamUserDO();
                 SteamPlayerProfile steamPlayerProfile = webApiSteamUser.getPlayerProfile(steamId).get();
                 BeanUtils.copyProperties(steamPlayerProfile,steamUserDO);
+                steamUserDO.setSteamId(Long.valueOf(steamPlayerProfile.getSteamId()));
                 steamUserDO = steamUserRepository.save(steamUserDO);
 
                 final SteamUserDO user = new SteamUserDO();

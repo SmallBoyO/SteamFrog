@@ -8,7 +8,8 @@ import xyz.steamfrog.pojo.SteamUserDO;
 import xyz.steamfrog.service.SteamUserService;
 
 @RestController
-public class SteamUserInfoController {
+public class SteamUserController {
+
   @Autowired
   private SteamUserService steamUserService;
 
