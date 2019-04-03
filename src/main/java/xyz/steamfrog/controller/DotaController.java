@@ -19,7 +19,6 @@ public class DotaController {
 
   @RequestMapping("/dota2/match/detail/{matchId}")
   public Object getMatchDetail(@PathVariable Long matchId){
-    System.out.println(Long.toBinaryString(matchId));
     return dotaService.getMatchDetails(matchId);
   }
 }
